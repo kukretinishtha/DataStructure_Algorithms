@@ -3,7 +3,6 @@ It is a Supervised Algorithm.
 A Decision tree is a flowchart like tree structure, where each internal node denotes a test 
 on an attribute, each branch represents an outcome of the test, 
 and each leaf node (terminal node) holds a class label.
-
 ****
 Assumptions:
     1. At the beginning, we consider the whole training set as the root.

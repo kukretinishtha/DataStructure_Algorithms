@@ -26,4 +26,12 @@ Important Keypoints:
 * K Means is found to work well when the shape of the clusters is hyper spherical (like circle in 2D, sphere in 3D).
 * K Means clustering requires prior knowledge of K i.e. no. of clusters you want to divide your data into. 
 * K Means clustering can handle big data well because of time complexity of O(n)
+
+The Elbow Method is one of the most popular methods to determine this optimal value of k.
+
+
+Visualizing the data alone cannot always give the right answer. Hence we demonstrate the following steps.
+We now define the following:
+1. Distortion: It is calculated as the average of the squared distances from the cluster centers of the respective clusters. Typically, the Euclidean distance metric is used.
+2. Inertia: It is the sum of squared distances of samples to their closest cluster center.
 '''
