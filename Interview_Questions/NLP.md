@@ -9,7 +9,8 @@
 
 
 2. What is Tokenization?
-    Tokenization is the process of converting a sequence of characters into a sequence of tokens. Ex :RegexpTokenizer & Word Tokenize (scikit-learn)
+    Tokenization is the process of converting a sequence of characters into a sequence of tokens. 
+    Ex - RegexpTokenizer & Word Tokenize (scikit-learn)
 
 
 3. What is Stemming and lemmatization?
@@ -29,6 +30,10 @@
 5. What is tf-idf?
     TF-IDF reveals what words are the most discriminating between different bodies of text. It is dependent on term frequency, how often a word appears, and Inverse document frequency, whether it is unique or common among all documents. It is particularly, helpful if you are trying to see the difference between words that occur a lot in one document, but fail to appear in others allowing you interpret something special about that document.
 
-
 6. What is word2vec ?
     It is a shallow two-layer neural networks that are trained to construct linguistic context of words. It Takes as input a large corpus, and produce a vector space, typically of several hundred dimension, and each word in the corpus is assigned a vector in the space. The key idea is context: words that occur often in the same context should have same/opposite meanings.
+
+7. What is Glove?
+
+
+8. What is Cosine similarity?
