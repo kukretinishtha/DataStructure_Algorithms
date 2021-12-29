@@ -13,8 +13,10 @@ def MaxActivities(arr, n):
 
 # Driver code
 Activity = [[5, 9], [1, 2], [3, 4], [0, 6],[5, 7], [8, 9]]
-n = len(Activity)
-selected = MaxActivities(Activity, n)
-print("Following activities are selected :")
-print(selected)
+
+selected = MaxActivities(Activity, len(Activity))
+
+print(f"Following activities are selected :{selected}")
+
+# I am chceking
 
