@@ -44,14 +44,14 @@
 
 6. Descriptive Statistical Measurement in Detail
     #### Distribution 
-        It is the summary of individual variable frequency <br/>
+        It is the summary of individual variable frequency 
 
     #### The Central Tendancy
-        It tells about the value w.r.t centre of data <br/>
+        It tells about the value w.r.t centre of data 
     ##### Mean, Medain, Mode
-        ** When to use mean Imputation -  When the data is Uniformly distributed and is numerical <br/>
-        ** When to use Median Imputation - When the data is skewed and does not follow uniform distribution and is numerical. Median is less sensitive to ouliers. <br/>
-        ** When to use Mode - When the data is categorical/ Numerical with small number of unique values <br/>
+        ** When to use mean Imputation -  When the data is Uniformly distributed and is numerical 
+        ** When to use Median Imputation - When the data is skewed and does not follow uniform distribution and is numerical. Median is less sensitive to ouliers. 
+        ** When to use Mode - When the data is categorical/ Numerical with small number of unique values 
 
     #### Dispersion
         It tells about the degree of variation in the data <br/>
