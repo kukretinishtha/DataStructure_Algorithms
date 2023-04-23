@@ -211,3 +211,121 @@
     - Triple Exponential Smoothing method models the next time step as an exponentially weighted linear function of observations at prior time steps, taking trends and seasonality into account. <br/>
     #### Python Code
     from statsmodels.tsa.holtwinters import ExponentialSmoothing <br/>
+
+29. fischer Score
+    - Fisher score is one of the most widely used supervised feature selection methods. However, it selects each feature independently according to their scores under the Fisher criterion, which leads to a suboptimal subset of features.<br/>
+
+30. Machine Learning Feature Selection Technique
+    ### Supervised Filter Methods
+    * Information gain
+        * - Information gain calculates the reduction in entropy from the transformation of a dataset. <br/>
+        * - It can be used for feature selection by evaluating the Information gain of each variable in the context of the target variable.<br/>
+        #### Python Code <br/>
+                from sklearn. feature selection import mutual_ info_classif <br/>
+
+    * Chi Squared Test
+        * - Chi-square test is used for categorical features in a dataset. <br/>
+        * - We calculate Chi-square between each feature and the target and select the desired number of features with the best Chi-square scores. <br/>
+        #### Condition:
+        * the variables have to be categorical, 
+        * sampled independently, 
+        * values should have an expected frequency greater than 5.
+        #### Python Code <br/>
+            from sklearn.feature selection import SelectKBest <br/>
+            from sklearn. feature_selection import chi2 <br/>
+            X cat = X. astype(int) # Convert to categorical data by converting data to integers <br/>
+            chi2_features = SelectKBest(chi2, k = 3)  # Three features with highest chi-squared statistics are selected <br/>
+            X_kbest_features = chi2_features.fit_transform(X_cat, Y) <br/>
+
+    * Fischer Score
+        *  - The algorithm we will use returns the ranks of the variables based on the fisher’s score in descending order. <br/>
+        #### Python Code
+            from skfeature.function. similarity_based import fisher_score <br/>
+            import matplotlib.pyplot as plt <br/>
+            ranks = fisher_score.fisher_score(X, Y) <br/>
+    
+    * Correlation matrix
+        * - variables should be correlated with the target but uncorrelated among themselves.
+        * - We can also compute multiple correlation coefficients to check whether more than two variables correlate. This phenomenon is known as multicollinearity.
+        #### Python Code
+            cor = dataframe.corr ()
+
+    ### Unsupervised Filter Technique
+    * Variance Threshold
+        * - It removes all features whose variance doesn’t meet some threshold. By default, it removes all zero-variance features. <br/>
+        * - drawback - not taking the relationship between feature variables or feature and target variables into account <br/>
+        #### Python Code
+            from sklearn.feature selection import VarianceThreshold <br/>
+            X = array[:, 0:8] # Resetting the value of X to make it non-categorical <br/>
+            v_threshold = VarianceThreshold(threshold=0) <br/>
+            v_threshold.fit(X) # fit finds the features with zero variance <br/>
+            v_threshold.get_support() <br/>
+    
+    * Mean Absolute Difference 
+        * - The main difference between the variance and MAD measures is the absence of the square in the latter. <br/>
+        * - The MAD, like the variance, is also a scaled variant. <br/>
+        * - higher the MAD, the higher the discriminatory power. <br/>
+
+        #### Python Code
+            mean_abs_diff = np.sum(np.abs(X -np.mean(X, axis =0 )), axis = 0) /X. shape  <br/>
+
+    * Dispersion Ratio
+        * - Higher dispersion implies a higher value of Ri, thus a more relevant feature. 
+        * - Conversely, when all the feature samples have (roughly) the same value, Ri is close to 1, indicating a low relevance feature.
+
+    ### Wrapper Methods
+    It follows a greedy search approach by evaluating all the possible combinations of features against the evaluation criterion. 
+    * Forward feature selection
+        * performing features against the target features
+        * select another variable that gives the best performance in combination with the first selected variable
+        #### Python Code
+        from mlxtend. feature_selection import SequentialfeatureSelector <br/>
+        ffs - SequentialfeatureSelector (Ir, k_features= 'best' , forward - True, n_jobs=-1) ffs.fit(X, Y) <br/>
+        features - list(ffs.k_feature_names_) <br/>
+        features = list(map(int, features)) <br/>
+        Ir.fit (x_train [features], y_train) <br/>
+        y_pred = Ir.predict(x_train[features]) <br/>
+
+    * Backward feature Elimination
+        * we start with all the features available and build a model. 
+        * Next, we take the variable from the model, which gives the best evaluation measure value
+        #### Python Code
+        from mlxtend. feature_selection import SequentialfeatureSelector
+
+    * Exhaustive Feature selection Method
+        * Its a brute force approach
+        * It tries every possible combination and returns the best subset.
+        #### Python Code
+        from mixtend. feature_selection import ExhaustivefeatureSelector
+    
+    * Recursive Feature Elimination
+        * Assign weights to features
+        * select features by recursively considering smaller and smaller sets of features
+        * the estimator is trained on the initial set of features, and each feature’s importance is obtained either through a coef_ attribute or a feature_importances_ attribute.
+        * Then, the least important features are pruned from the current set of features. 
+        * The procedure is recursively repeated on the pruned set until the desired number of features to select is eventually reached.
+        #### Python Code
+        from sklearn.feature selection import RE
+
+    ### Embedded Method
+    Embedded methods are iterative in the sense that takes care of each iteration of the model training process and carefully extract those features which contribute the most to the training for a particular iteration <br/>
+    * Lasso Regularization (L1)
+        * L1 has the property that can shrink some of the coefficients to zero. Therefore, that feature can be removed from the model
+        #### Python Code
+        from sklearn. linear model import LogisticRegression <br/>
+        from skiearn.reature selection imoort SelectFromModel <br/>
+        logistic = LogisticRegression(C-1, penalty-"Il", solver 'liblinear', random_state=7).fit(X, Y) <br/>
+        model = SelectFromModel(logistic, prefit = true)  <br/>
+        X_new = model.transform(X) <br/>
+        selected_columns = selected_features.columns [selected_features.var () != 0] <br/>
+
+    * Random Forest Trees
+        * Nodes with the greatest decrease in impurity happen at the start of the trees, while notes with the least decrease in impurity(Ginni Index) occur at the end of the trees
+        #### Python Code
+        from sklearn.ensemble import RandomForestClassifier
+        model = RandomForestClassifier (n_estimators=340)
+        model.fit (X, Y)
+        importances = model.feature_importances_
+        final_df = pd.oataframe ({"Features": pd.Dataframe(X) .columns, "Importances" : importances))
+        final df.set index('Importances')
+        final_df = final_df.sort_values ('Importances")
